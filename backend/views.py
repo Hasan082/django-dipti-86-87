@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import User
 
-# Create your views here.
+
 def home(request):
-    return render(request, "home.html")
+    data = User.objects.all()
+    context = {
+        'data': data
+    }
+    return render(request, "home.html", context)
