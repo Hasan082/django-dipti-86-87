@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container py-5">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h1 class="text-center">Our form</h1>
+                 <form method="POST" id="createBlogForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+{#                <form method="POST" action="">#}
+{#                    {% csrf_token %}#}
+{#                    <div>#}
+{#                        <input type="text" name="name" class="form-control mb-3" placeholder="Name">#}
+{#                        <input type="email" name="email" class="form-control mb-3" placeholder="Email">#}
+{#                        <input type="number" name="age" class="form-control mb-3" placeholder="Age">#}
+{#                        <input type="checkbox" class="form-check-input mb-3" name="ismaried"> IsMarried#}
+{#                    </div>#}
+{#                    <div class="text-center">#}
+{#                        <button type="submit" class="btn btn-primary">Submit</button>#}
+{#                    </div>#}
+{#                </form>#}
+                
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
